@@ -1,0 +1,44 @@
+// ==========================================================================
+// Content
+// ==========================================================================
+
+body {
+    height: 100vh;
+}
+
+.elements-container {
+    padding: 30px;
+    margin-bottom: 30px;
+
+    background: $white;
+    border: 1px solid $iron;
+    border-radius: 10px;
+    &#{&}--dark {
+        background: $dark;
+    }
+}
+
+.webkit-text {
+    color: $dark;
+    font-family: "arial";
+    &#{&--h1} {
+        font-size: 25px;
+    }
+    &#{&--h2} {
+        font-size: 20px;
+    }
+    &#{&--h3} {
+        font-size: 18px;
+    }
+    &#{&--h4} {
+        font-size: 16px;
+    }
+}
+
+.btn-webkit {
+    &.btn-dark {
+        background: $dark;
+        border-color: $dark;
+        color: $white;
+    }
+}

@@ -1,0 +1,46 @@
+{% extends 'style_guide/base.html.twig' %}
+
+{% block title %}Guide de style - Storistes de France{% endblock %}
+
+{% block body %}
+    <table class="templates-table">
+        <thead>
+        <tr>
+            <th>Template</th>
+            <th>Tags</th>
+            <th>Description</th>
+            <th>Progression</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% include 'style_guide/partials/progress.html.twig' with {
+            template: 'modules/block_title-subtitle',
+            title: 'Titre + sous-titre',
+            tags: ['Text'],
+            description: '',
+            progress: 0
+        }  %}
+        {% include 'style_guide/partials/progress.html.twig' with {
+            template: 'elements/type',
+            title: 'Typographie',
+            tags: ['Text', 'Wysiwyg', 'Links'],
+            description: 'Mise en forme des différents textes : titres, paragraphes, liste',
+            progress: 0
+        }  %}
+        {% include 'style_guide/partials/progress.html.twig' with {
+            template: 'elements/buttons',
+            title: 'Boutons',
+            tags: ['Buttons', 'CTA', 'filters'],
+            description: 'Les différents boutons du site',
+            progress: 0
+        }  %}
+        {% include 'style_guide/partials/progress.html.twig' with {
+            template: 'elements/form',
+            title: 'Formulaire',
+            tags: ['input', 'textarea', 'radio', 'checkbox', 'select'],
+            description: 'Style du formulaire',
+            progress: 0
+        }  %}
+        </tbody>
+    </table>
+{% endblock %}

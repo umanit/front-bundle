@@ -1,0 +1,5 @@
+style_guide:
+    path: /style-guide/{template}
+    controller: FrontBundle\Controller\StyleGuideController
+    requirements:
+        template: .+

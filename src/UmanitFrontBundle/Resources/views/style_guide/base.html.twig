@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Style guide{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('styleguide') }}
+    {% endblock %}
+</head>
+<body class="d-flex flex-column">
+<header class="p-3 mb-5">
+    <div class="container">
+        <h1 class="webkit-text webkit-text--h1 text-center">Webkit UmanIT</h1>
+    </div>
+</header>
+
+<section class="container flex-grow-1">
+    {% block link_home %}{% endblock %}
+    <div class="text-center mb-5">
+        <h1 class="webkit-text webkit-text--h1">{% block heading_section %}{% endblock %}</h1>
+        {% block desc_section %}{% endblock %}
+    </div>
+
+    {% block body %}{% endblock %}
+</section>
+
+<footer class="p-3 mt-4">
+    <div class="row">
+        <div class="col-12">
+            © UmanIT - Dernière mise à jour août 2019
+        </div>
+    </div>
+</footer>
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
+</html>

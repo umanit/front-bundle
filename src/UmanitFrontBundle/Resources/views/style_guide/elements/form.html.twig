@@ -1,0 +1,20 @@
+{% extends 'style_guide/base.html.twig' %}
+
+{% block link_home %}
+  <a href="{{ path('app.style_guide', { template: 'index' }) }}" class="btn btn-webkit btn-sm btn-dark">Accueil
+  guide de style</a>
+{% endblock %}
+
+{% block heading_section %}Formulaire{% endblock %}
+
+{% block desc_section %}Différents éléments de formulaire{% endblock %}
+
+
+{% block body %}
+
+{% endblock %}
+
+{% block javascripts %}
+  {#{{ parent() }}#}
+  {#{{ encore_entry_script_tags('form') }}#}
+{% endblock %}

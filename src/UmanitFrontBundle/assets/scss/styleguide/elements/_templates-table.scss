@@ -1,0 +1,30 @@
+// ==========================================================================
+// Templates table
+// ==========================================================================
+
+.templates-table {
+    width: 100%;
+    thead {
+        background: $manatee;
+
+        color: $white;
+    }
+    th {
+        padding: rem(10);
+
+        text-align: center;
+
+    }
+    tbody {
+        tr:nth-child(even) {
+            background: $iron;
+        }
+        td {
+            padding: 5px;
+        }
+    }
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+}
