@@ -18,7 +18,6 @@
     "prefer-stable": true,
     "require": {
         "php": ">=7.0",
-        "symfony/framework-bundle": "^2.8",
         "twig/extensions": "^1.5"
     },
     "require-dev": {
