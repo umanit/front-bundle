@@ -1,0 +1,15 @@
+services:
+    umanit_front_init_command:
+        class: Umanit\FrontBundle\Command\InitFrontCommand
+        arguments:
+            - '@file_locator'
+            - '%kernel.project_dir%'
+            -
+                - assets
+                - package.json
+                - postcss.config.js
+                - webpack.config.js
+            -
+                - assets/scss/styleguide
+                - assets/scss/styleguide.scss
+        tags: ['console.command']

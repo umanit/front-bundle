@@ -1,7 +1,10 @@
+###> imports ###
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 let path = require('path');
 let glob = require('glob-all');
+###< imports ###
 
+###> config ###
 Encore.addPlugin(new PurgecssPlugin({
     paths: glob.sync([
             path.join(__dirname, 'templates/**/*.html.twig'),
@@ -19,4 +22,5 @@ Encore.addPlugin(new PurgecssPlugin({
         }
     ],
     whitelistPatterns: [/slick/,/select2/,/link--i/]
-}))
+}));
+###< config ###

@@ -12,6 +12,9 @@
         {
             "name": "Romain Bremaud",
             "email": "rbremaud@umanit.fr"
+        }, {
+            "name": "Vivien De Bona",
+            "email": "vdebona@umanit.fr"
         }
     ],
     "minimum-stability": "dev",
