@@ -72,10 +72,11 @@ class InitFrontCommand extends Command
     {
         $output->writeln('<comment>Téléchargement du front-kit...</comment>');
 
+        /** @var string $bundleResources */
         $bundleResources = $this->fileLocator->locate('@UmanitFrontBundle/Resources');
         $frontKitPath    = $this->downloadFile(self::FRONT_KIT_URL);
 
-        if (!is_file($frontKitPath)) {
+        if (false === $frontKitPath || !is_file($frontKitPath)) {
             $output->writeln('<error>Erreur lors du téléchargement du front-kit.</error>');
 
             exit(1);
@@ -161,12 +162,32 @@ class InitFrontCommand extends Command
             $output->writeln('<comment>Modification du <options=bold>webpack.config.js</>...</comment>');
 
             $symfonyConfig = file_get_contents($bundleResources.'/symfony.config.js');
+
+            if (false === $symfonyConfig) {
+                $output->writeln('<error>Erreur lors de la lecture du fichier <options=bold>symfony.config.js</>.</error>');
+
+                exit(1);
+            }
+
             $webpackConfig = file_get_contents($this->projectDir.'/webpack.config.js');
-            $matches       = [];
+
+            if (false === $webpackConfig) {
+                $output->writeln('<error>Erreur lors de la lecture du fichier <options=bold>webpack.config.js</>.</error>');
+
+                exit(1);
+            }
+
+            $matches = [];
 
             preg_match_all('/###> (?\'part\'\w+) ###\n(?\'content\'.*)?###< \1 ###/s', $symfonyConfig, $matches);
 
             $parts = array_combine($matches['part'], $matches['content']);
+
+            if (false === $parts) {
+                $output->writeln('<error>Erreur lors de l\'analyse du fichier <options=bold>symfony.config.js</>.</error>');
+
+                exit(1);
+            }
 
             if (array_key_exists('imports', $parts)) {
                 $webpackConfig = $parts['imports'].$webpackConfig;
@@ -215,11 +236,11 @@ class InitFrontCommand extends Command
     }
 
     /**
-     * @param $url
+     * @param string $url
      *
      * @return string|false
      */
-    private function downloadFile($url)
+    private function downloadFile(string $url)
     {
         $newfname = $this->getTemp();
 
@@ -234,7 +255,13 @@ class InitFrontCommand extends Command
 
             if ($newf) {
                 while (!feof($file)) {
-                    fwrite($newf, fread($file, 1024 * 8), 1024 * 8);
+                    $str = fread($file, 1024 * 8);
+
+                    if (false === $str) {
+                        throw new \OutOfBoundsException('Impossible de lire le stream.');
+                    }
+
+                    fwrite($newf, $str, 1024 * 8);
                 }
 
                 fclose($newf);
