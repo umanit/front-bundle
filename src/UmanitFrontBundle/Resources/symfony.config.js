@@ -1,7 +1,6 @@
 ###> imports ###
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 let path = require('path');
-let glob = require('glob-all');
 ###< imports ###
 
 ###> config ###
