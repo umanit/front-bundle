@@ -12,4 +12,5 @@ services:
             -
                 - assets/scss/styleguide
                 - assets/scss/styleguide.scss
+                - assets/js/styleguide.js
         tags: ['console.command']
