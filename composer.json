@@ -21,7 +21,6 @@
     "prefer-stable": true,
     "require": {
         "php": ">=7.0",
-        "twig/extensions": "^1.5",
         "symfony/framework-bundle": "^5.0",
         "symfony/webpack-encore-bundle": "^1.6",
         "symfony/yaml": "^5.0"
