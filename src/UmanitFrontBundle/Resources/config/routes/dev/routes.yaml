@@ -1,4 +1,4 @@
-style_guide:
+app.style_guide:
     path: /style-guide/{template}
     controller: Umanit\FrontBundle\Controller\StyleGuideController
     requirements:

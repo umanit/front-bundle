@@ -7,6 +7,7 @@ let path = require('path');
 Encore.addPlugin(new PurgecssPlugin({
     paths: glob.sync([
             path.join(__dirname, 'templates/**/*.html.twig'),
+            'vendor/umanit/front-bundle/src/UmanitFrontBundle/Resources/views/style_guide/**/*.html.twig',
             assetPath + '/js/**/*.js'
         ]
     ),

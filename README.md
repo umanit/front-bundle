@@ -69,8 +69,8 @@ style_guide:
 Dans ```projet/templates```, créer le dossier ```style_guide```, puis structurer comme suit :
 ```
 style_guide
-	|_ partials
-		|_ progress.html.twig
+    |_ modules
+        |_ buttons.html.twig
 	|_ index.html.twig
 ```
 
@@ -82,7 +82,7 @@ style_guide
 
 {% block body %}
     <table>
-        {% include 'style_guide/partials/progress.html.twig' with {
+        {% include '@UmanitFront/style_guide/partials/progress.html.twig' with {
          template: 'block',
          title: 'Block',
          tags: ['layout'],
