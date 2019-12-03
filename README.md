@@ -94,31 +94,6 @@ style_guide
 ```
 Le ``` {% include %} ``` est à répéter autant de fois qu'il y a d'éléments ajoutés dans le dossier.
 
-#### progress.html.twig
-La ligne répétée à chacun de ses appels dans le ``` index.html.twig```.
-```
-<tr>
-    <td width="40%">
-        <a href="{{ path('app.style_guide', { template: template|default('index') }) }}">{{ title|default('Unnamed template')  }}</a>
-        <p>
-            {% for tag in tags|default([]) %}
-                <small class="badge badge-warning">{{ tag|upper }}</small>
-            {% endfor %}
-        </p>
-        <p>
-            <small>{{ description|default('No description provided.') }}</small>
-        </p>
-    </td>
-    <td width="60%">
-        <div class="progress">
-            <div class="progress-bar" style="width:{{ progress|default(0) }};">{{ progress|default(0) }}</div>
-        </div>
-    </td>
-</tr>
-```
-## Réglages supplémentaires
-
-
 Utilisation
 --------
 
