@@ -69,9 +69,9 @@ style_guide:
 Dans ```projet/templates```, créer le dossier ```style_guide```, puis structurer comme suit :
 ```
 style_guide
+    |_ index.html.twig
     |_ modules
         |_ buttons.html.twig
-	|_ index.html.twig
 ```
 
 #### index.html.twig
