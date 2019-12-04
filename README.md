@@ -42,7 +42,7 @@ Ensuite à la racine du projet lancer la commande
 composer require umanit/front-bundle
 ```
 
-Une fois le bundle installé il faut supprimer le package.json et le webpack.config.js qui ont été rajoutés par la 
+Une fois le bundle installé il **faut supprimer le package.json et le webpack.config.js** qui ont été rajoutés par la 
 recipe flex du webpack-encore-bundle
 
 Ensuite il faut lancer la commande suivante : 
