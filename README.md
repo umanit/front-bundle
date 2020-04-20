@@ -9,7 +9,7 @@ Pré-requis
 
 
 * Utiliser symfony 4
-* Avoir node et yarn d'installés sur sa machine
+* Utiliser NVM pour installer node et yarn sur sa machine
 
 Installation
 --------
