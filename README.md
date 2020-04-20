@@ -9,18 +9,7 @@ Pré-requis
 
 
 * Utiliser symfony 4
-* Avoir dockerisé node dans le projet cible dans un fichier **docker-compose.yaml** 
-
-```
-services:
-  node:
-    image: node:12
-    working_dir: /var/www/html
-    user: node
-    tty: true
-    volumes:
-      - .:/var/www/html:delegated
-```
+* Avoir node et yarn d'installés sur sa machine
 
 Installation
 --------

@@ -208,31 +208,7 @@ class InitFrontCommand extends Command
             $output->writeln('<error>Aucun fichier <options=bold>webpack.config.js</> trouvé.</error>');
         }
 
-        $dockerCompose = $this->projectDir.'/docker-compose.yaml';
-
-        if (is_file($dockerCompose)) {
-            $yaml = Yaml::parseFile($dockerCompose);
-
-            if (!array_key_exists('node', $yaml['services'])) {
-                $output->writeln('<comment>Ajout d\'un service node dans le <options=bold>docker-compose.yaml</>...</comment>');
-
-                $yaml['services']['node'] = [
-                    'image'       => 'node:12-alpine',
-                    'working_dir' => '/app',
-                    'user'        => 'node',
-                    'tty'         => true,
-                    'volumes'     => [
-                        '.:/app:delegated',
-                    ],
-                ];
-
-                file_put_contents($dockerCompose, Yaml::dump($yaml, 4));
-            }
-        } else {
-            $output->writeln('<error>Aucun fichier <options=bold>docker-compose.yaml</> trouvé.</error>');
-        }
-
-        $output->writeln('<info>Il ne vous reste plus qu\'à exécuter les commandes <options=bold>docker-compose exec node yarn install</> et <options=bold>docker-compose exec node yarn dev</>.</info>');
+        $output->writeln('<info>Il ne vous reste plus qu\'à exécuter les commandes <options=bold>nvm exec yarn install</> et <options=bold>nvm exec yarn dev</>.</info>');
     }
 
     /**
