@@ -1,61 +1,52 @@
-ReadMe 
+ReadMe
 ========
 
-Ce starter kit est à utiliser dans le cadre d'un projet symfony. Il embarque [le starter kit ](https://github.com/umanit/front-kit)
-Avec des fonctionnalités en plus : un guide de style 
+Ce starter kit est à utiliser dans le cadre d'un projet symfony. Il embarque [le starter kit](https://github.com/umanit/front-kit)
+
+Avec des fonctionnalités en plus :
+* un guide de style
+* une route pour gérer des intégrations statiques
 
 Pré-requis
 --------
 
-
-* Utiliser symfony 4
+* Utiliser Symfony 4
 * Utiliser NVM pour installer node et yarn sur sa machine
 
 Installation
 --------
 
-Il faut ajouter dans le composer.json de votre projet l'entré suivante 
-
-```
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/umanit/front-bundle"
-        }
-    ],
-```
-
-Ensuite à la racine du projet lancer la commande 
+À la racine du projet lancer la commande
 
 ```
 composer require umanit/front-bundle
 ```
 
-Une fois le bundle installé il **faut supprimer le package.json et le webpack.config.js** qui ont été rajoutés par la 
-recipe flex du webpack-encore-bundle
+Une fois le bundle installé **il faut supprimer le package.json et le webpack.config.js** qui ont été rajoutés par la
+recipe flex de `webpack-encore-bundle`.
 
-Ensuite il faut lancer la commande suivante : 
-
-```
-php bin/console umanit:front-bundle:init 
-```
-
-Une fois terminée il faut installer les dépendances front : 
+Ensuite, il faut lancer la commande suivante :
 
 ```
-docker-compose exec node yarn install
+php bin/console umanit:front-bundle:init
 ```
 
-Enregistrer les routes 
+Une fois terminée, il faut installer les dépendances front :
 
 ```
-# app/config/routes/dev/styleguide.yaml
-style_guide:
+nvm exec yarn install
+```
+
+Enregistrer les routes
+
+```yaml
+# app/config/routes/dev/umanit_front_bundle.yaml
+umanit_front_bundle:
     resource: "@UmanitFrontBundle/Resources/config/routes/dev/routes.yaml"
 ```
 
 ### Le dossier et les fichiers du guide de style
-Dans ```projet/templates```, créer le dossier ```style_guide```, puis structurer comme suit :
+Dans `projet/templates`, créer le dossier `style_guide`, puis structurer comme suit :
 ```
 style_guide
     |_ index.html.twig
@@ -64,7 +55,7 @@ style_guide
 ```
 
 #### index.html.twig
-```
+```twig
 {% extends '@UmanitFront/style_guide/base.html.twig' %}
 
 {% block title %}{% endblock %}
@@ -72,18 +63,28 @@ style_guide
 {% block body %}
     <table>
         {% include '@UmanitFront/style_guide/partials/progress.html.twig' with {
-         template: 'block',
-         title: 'Block',
-         tags: ['layout'],
-         description: 'Block description',
-         progress: 30
-          }  %}
+             template: 'block',
+             title: 'Block',
+             tags: ['layout'],
+             description: 'Block description',
+             progress: 30
+         } %}
     </table>
 {% endblock %}
 ```
-Le ``` {% include %} ``` est à répéter autant de fois qu'il y a d'éléments ajoutés dans le dossier.
+
+Le `{% include %}` est à répéter autant de fois qu'il y a d'éléments ajoutés dans le dossier.
+
+### Route d'intégration statique
+
+La route `/static/{path}` permet d'afficher les Twigs intégrés de manière statiques
+La variable `{path}` correspond au chemin d'accès d'un template Twig se trouvant dans `templates/`, qu'importe sa profondeur dans
+l'arborescence.
+
+* `https://domain.wip/static/nom-du-twig.html` rendra la vue Twig `templates/nom-du-twig.html.twig`
+* `https://domain.wip/static/sous-dossier/ma_vue.html` rendra la vue Twig `templates/sous-dossier/ma_vue.html.twig`
 
 Utilisation
 --------
 
-Pour toute la partie css l'utilisation est la même que le [front kit](https://github.com/umanit/front-kit#utilisation)
+Pour toute la partie CSS l'utilisation est la même que le [front kit](https://github.com/umanit/front-kit#utilisation).

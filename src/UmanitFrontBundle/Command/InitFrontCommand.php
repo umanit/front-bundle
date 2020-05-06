@@ -7,7 +7,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class InitFrontCommand
@@ -46,17 +45,14 @@ class InitFrontCommand extends Command
         array $frontKitEntries,
         array $frontBundleEntries
     ) {
-        $this->projectDir         = $projectDir;
-        $this->fileLocator        = $fileLocator;
-        $this->frontKitEntries    = $frontKitEntries;
+        $this->projectDir = $projectDir;
+        $this->fileLocator = $fileLocator;
+        $this->frontKitEntries = $frontKitEntries;
         $this->frontBundleEntries = $frontBundleEntries;
 
         parent::__construct();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     protected function configure()
     {
         $this
@@ -65,16 +61,13 @@ class InitFrontCommand extends Command
         ;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln('<comment>Téléchargement du front-kit...</comment>');
 
         /** @var string $bundleResources */
         $bundleResources = $this->fileLocator->locate('@UmanitFrontBundle/Resources');
-        $frontKitPath    = $this->downloadFile(self::FRONT_KIT_URL);
+        $frontKitPath = $this->downloadFile(self::FRONT_KIT_URL);
 
         if (false === $frontKitPath || !is_file($frontKitPath)) {
             $output->writeln('<error>Erreur lors du téléchargement du front-kit.</error>');
@@ -92,7 +85,7 @@ class InitFrontCommand extends Command
 
         $extractedFrontKitPath = $frontKitPath.'_extract';
 
-        if (!mkdir($extractedFrontKitPath, 0700)) {
+        if (!mkdir($extractedFrontKitPath, 0700) && !is_dir($extractedFrontKitPath)) {
             $output->writeln('<error>Erreur lors de l\'extraction de l\'archive.</error>');
 
             exit(1);

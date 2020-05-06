@@ -12,9 +12,6 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
  */
 class UmanitFrontExtension extends Extension
 {
-    /**
-     * {@inheritDoc}
-     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new YamlFileLoader(
