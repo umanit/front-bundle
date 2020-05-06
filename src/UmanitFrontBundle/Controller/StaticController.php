@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 final class StaticController extends AbstractController
 {
-    public function __invoke(string $path, string $basePath = ''): Response
+    public function __invoke(string $basePath, string $path): Response
     {
         $extension = '.html' === mb_substr($path, -5) ? '' : '.html';
 
