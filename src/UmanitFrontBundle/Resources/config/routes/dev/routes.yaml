@@ -2,7 +2,7 @@ umanit_front_bundle.style_guide:
     path: /style-guide/{path}
     controller: Umanit\FrontBundle\Controller\StaticController
     defaults:
-        base_path: 'style_guide/'
+        basePath: 'style_guide/'
     requirements:
         path: .+
 
@@ -10,6 +10,6 @@ umanit_front_bundle.static_template:
     path: /static/{path}
     controller: Umanit\FrontBundle\Controller\StaticController
     defaults:
-        base_path: ''
+        basePath: ''
     requirements:
         path: .+
