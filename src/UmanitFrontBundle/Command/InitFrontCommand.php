@@ -72,7 +72,7 @@ class InitFrontCommand extends Command
         if (false === $frontKitPath || !is_file($frontKitPath)) {
             $output->writeln('<error>Erreur lors du téléchargement du front-kit.</error>');
 
-            exit(1);
+            return 1;
         }
 
         $output->writeln('<comment>Extraction de l\'archive...</comment>');
@@ -88,13 +88,13 @@ class InitFrontCommand extends Command
         if (!mkdir($extractedFrontKitPath, 0700) && !is_dir($extractedFrontKitPath)) {
             $output->writeln('<error>Erreur lors de l\'extraction de l\'archive.</error>');
 
-            exit(1);
+            return 1;
         }
 
         if (!$zip->extractTo($extractedFrontKitPath)) {
             $output->writeln('<error>Erreur lors de l\'extraction de l\'archive.</error>');
 
-            exit(1);
+            return 1;
         }
 
         $zip->close();
@@ -159,7 +159,7 @@ class InitFrontCommand extends Command
             if (false === $symfonyConfig) {
                 $output->writeln('<error>Erreur lors de la lecture du fichier <options=bold>symfony.config.js</>.</error>');
 
-                exit(1);
+                return 1;
             }
 
             $webpackConfig = file_get_contents($this->projectDir.'/webpack.config.js');
@@ -167,7 +167,7 @@ class InitFrontCommand extends Command
             if (false === $webpackConfig) {
                 $output->writeln('<error>Erreur lors de la lecture du fichier <options=bold>webpack.config.js</>.</error>');
 
-                exit(1);
+                return 1;
             }
 
             $matches = [];
@@ -179,7 +179,7 @@ class InitFrontCommand extends Command
             if (false === $parts) {
                 $output->writeln('<error>Erreur lors de l\'analyse du fichier <options=bold>symfony.config.js</>.</error>');
 
-                exit(1);
+                return 1;
             }
 
             if (array_key_exists('imports', $parts)) {
@@ -202,6 +202,8 @@ class InitFrontCommand extends Command
         }
 
         $output->writeln('<info>Il ne vous reste plus qu\'à exécuter les commandes <options=bold>nvm exec yarn install</> et <options=bold>nvm exec yarn dev</>.</info>');
+
+        return 0;
     }
 
     /**
