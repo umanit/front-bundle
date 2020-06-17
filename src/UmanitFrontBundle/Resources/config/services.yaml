@@ -1,4 +1,18 @@
 services:
+    _defaults:
+        autowire: false
+        autoconfigure: false
+
+    umanit_front_static_controller:
+        class: Umanit\FrontBundle\Controller\StaticController
+        calls:
+            - [setContainer, ['@Psr\Container\ContainerInterface']]
+        tags: ['controller.service_arguments']
+
+    Umanit\FrontBundle\Controller\StaticController:
+        alias: umanit_front_static_controller
+        public: true
+
     umanit_front_init_command:
         class: Umanit\FrontBundle\Command\InitFrontCommand
         arguments:
