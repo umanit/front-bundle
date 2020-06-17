@@ -78,11 +78,11 @@ Le `{% include %}` est à répéter autant de fois qu'il y a d'éléments ajout�
 ### Route d'intégration statique
 
 La route `/static/{path}` permet d'afficher les Twigs intégrés de manière statiques
-La variable `{path}` correspond au chemin d'accès d'un template Twig se trouvant dans `templates/`, qu'importe sa profondeur dans
-l'arborescence.
+La variable `{path}` correspond au chemin d'accès d'un template Twig se trouvant dans `templates/static/`, qu'importe
+sa profondeur dans l'arborescence.
 
-* `https://domain.wip/static/nom-du-twig.html` rendra la vue Twig `templates/nom-du-twig.html.twig`
-* `https://domain.wip/static/sous-dossier/ma_vue.html` rendra la vue Twig `templates/sous-dossier/ma_vue.html.twig`
+* `https://domain.wip/static/nom-du-twig.html` rendra la vue Twig `templates/static/nom-du-twig.html.twig`
+* `https://domain.wip/static/sous-dossier/ma_vue.html` rendra la vue Twig `templates/static/sous-dossier/ma_vue.html.twig`
 
 Utilisation
 --------
