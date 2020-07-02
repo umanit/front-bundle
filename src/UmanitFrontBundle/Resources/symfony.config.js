@@ -6,23 +6,23 @@ let path = require('path');
 ###> config ###
 if(Encore.isProduction())
 {
-    Encore.addPlugin(new PurgecssPlugin({
-        paths: glob.sync([
-                path.join(__dirname, 'templates/**/*.html.twig'),
-                assetPath + '/js/**/*.js'
-            ]
-        ),
-        extractors: [
-            {
-                extractor: class {
-                    static extract(content) {
-                        return content.match(/[A-z0-9-:\/]+/g) || []
-                    }
+    Encore
+      .addPlugin(
+        new PurgecssPlugin({
+            paths: glob.sync([
+                  path.join(__dirname, 'templates/{*.html.twig,!(style_guide)/**/*.html.twig}'),
+                  assetPath + '/js/**/*.js',
+              ],
+            ),
+            extractors: [
+                {
+                    extractor: (content) => {
+                        return content.match(/[A-z0-9-:\/]+/g) || [];
+                    },
+                    extensions: ['twig', 'js'],
                 },
-                extensions: ['twig', 'js'],
-            }
-        ],
-        whitelistPatterns: [/slick/, /select2/, /link--i/]
-    }))
+            ],
+            whitelistPatterns: [/choices/, /splide/],
+        }))
 }
 ###< config ###
