@@ -22,7 +22,7 @@
     "require": {
         "php": ">=7.0",
         "symfony/framework-bundle": "^4.0|^5.0",
-        "symfony/webpack-encore-bundle": "^1.6",
+        "symfony/webpack-encore-bundle": "^1.1.11",
         "symfony/yaml": "^4.0|^5.0"
     },
     "require-dev": {
