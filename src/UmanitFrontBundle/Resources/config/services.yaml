@@ -23,8 +23,6 @@ services:
                 - package.json
                 - postcss.config.js
                 - webpack.config.js
-                - .npmrc
-                - .nvmrc
             -
                 - assets/scss/styleguide
                 - assets/scss/styleguide.scss
