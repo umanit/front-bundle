@@ -1,13 +1,9 @@
 services:
-    _defaults:
-        autowire: false
-        autoconfigure: false
-
     umanit_front_static_controller:
         class: Umanit\FrontBundle\Controller\StaticController
         calls:
-            - [setContainer, ['@service_container']]
-        tags: ['controller.service_arguments']
+            - [setContainer, ['@Psr\Container\ContainerInterface']]
+        tags: ['controller.service_arguments', 'container.service_subscriber']
 
     Umanit\FrontBundle\Controller\StaticController:
         alias: umanit_front_static_controller
